@@ -3,20 +3,20 @@
 #To perform a binary search in an array we repeatedly divide the search interval in half.
 #We begin with an interval covering the whole array. If the value of the search key is less than the item in the middle of the interval, narrow the interval to the lower half. Otherwise, narrow it to the upper half. Repeatedly check until the value is found or the interval is empty
 #https://www.geeksforgeeks.org/complexity-analysis-of-binary-search/
+#recursive binary search
+def binarySearch(array, lowvalue, highvalue, searchValue):
 
-def binarySearch(array, arraylength, startValue, searchValue):
-
-  if startValue >= arraylength:
-    mid = arraylength + (startValue -     arraylength) // 2
+  if lowvalue >= highvalue:
+    mid = lowvalue + (highvalue - lowvalue) // 2
     #if element is at the middle
     if array[mid] == searchValue:
       return mid
     #If element is smaler than mid it is in the left subarray
     elif array[mid] > searchValue:
-      return binarySearch(array, arraylength, mid-1, searchValue)
+      return binarySearch(array, lowvalue, mid-1, searchValue)
     #else the element is in the righ sub arra
     else:
-      return binarySearch(array, mid+1, startValue, searchValue)
+      return binarySearch(array, mid+1,highvalue, searchValue)
   else:
     #element not in array
     return -1
