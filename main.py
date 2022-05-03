@@ -9,22 +9,22 @@ import time
 
 def binarySearch(array, lowvalue, highvalue, searchValue):
 
-  if lowvalue >= highvalue:
-    mid = lowvalue + (highvalue -           lowvalue)//2
+  if highvalue >= lowvalue:
+    mid = lowvalue + (highvalue - lowvalue)//2
     #if element is at the middle
     if array[mid] == searchValue:
       return mid
-    #If element is smaler than mid it is in the left subarray
+    #If element is smaller than mid it is in the left subarray
     elif array[mid] > searchValue:
       return binarySearch(array, lowvalue, mid-1, searchValue)
-    #else the element is in the right sub arra
+    #else the element is in the right sub array
     else:
       return binarySearch(array, mid+1,highvalue, searchValue)
   else:
     #element not in array
     return -1
 start = time.time()
-array = [45,29,61,21,40,31,82,90]
+array = [21,29,31,40,45,61,82,90]
 searchValue = 61
 
 result = binarySearch(array, 0, len(array)-1, searchValue)
